@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Picture in Picture Viewer",
-  "description": "Docks your favourite stuff in a small panel window like webpages, videos, flash games or even your local files.",
+  "description": "Docks your favourite stuff in a small panel window like webpages, videos, flash games, chrome apps or even your local files.",
   "version": "0.1",
   "author": "Chong Zhang",
 
