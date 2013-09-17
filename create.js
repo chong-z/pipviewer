@@ -67,6 +67,12 @@ var windowCreater = {
     },
 
     onFrameWindowCreated_: function(window) {
+        var isPanelEnabled = window.alwaysOnTop;
+        if (isPanelEnabled) {
+            $("#panel_enable_guide").css("display", "none");
+        } else {
+            $("#panel_enable_guide").css("display", "block");
+        };
     },
 
     createURLWindow_: function(aurl) {
@@ -81,6 +87,12 @@ var windowCreater = {
     },
 
     onURLWindowCreated_: function(window) {
+        var isPanelEnabled = window.alwaysOnTop;
+        if (isPanelEnabled) {
+            $("#panel_enable_guide").css("display", "none");
+        } else {
+            $("#panel_enable_guide").css("display", "block");
+        };
     },
     
 };
