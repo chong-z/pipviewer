@@ -63,16 +63,7 @@ var windowCreater = {
 
         console.log("get_frame_src listener set");
 
-        chrome.windows.create(createData, this.onFrameWindowCreated_);
-    },
-
-    onFrameWindowCreated_: function(window) {
-        var isPanelEnabled = window.alwaysOnTop;
-        if (isPanelEnabled) {
-            $("#panel_enable_guide").css("display", "none");
-        } else {
-            $("#panel_enable_guide").css("display", "block");
-        };
+        chrome.windows.create(createData, this.onWindowCreated_);
     },
 
     createURLWindow_: function(aurl) {
@@ -83,15 +74,17 @@ var windowCreater = {
 
         console.log("New url is " + aurl);
         
-        chrome.windows.create(createData, this.onURLWindowCreated_);
+        chrome.windows.create(createData, this.onWindowCreated_);
     },
 
-    onURLWindowCreated_: function(window) {
+    onWindowCreated_: function(window) {
         var isPanelEnabled = window.alwaysOnTop;
         if (isPanelEnabled) {
             $("#panel_enable_guide").css("display", "none");
+            _gaq.push(['_trackEvent', 'PanelFlag', 'Enabled']);
         } else {
             $("#panel_enable_guide").css("display", "block");
+            _gaq.push(['_trackEvent', 'PanelFlag', 'Disabled']);
         };
     },
     
@@ -120,6 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         return false;
+    });
+
+    $("#flags_tab_link").click(function() {
+        chrome.tabs.create({url: "chrome://flags/"}, null);
     });
 
 });
