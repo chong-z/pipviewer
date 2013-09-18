@@ -111,8 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (srcurl.indexOf("chrome://newtab") == -1) {
             windowCreater.makeNewWindow(srcurl);
         };
+    });
 
-        return false;
+    $("#a_url_box").keydown(function(e){
+        if (e.keyCode == 13) {
+            $("#new_panel_btn").trigger("click");
+        };
     });
 
     $("#flags_tab_link").click(function() {
