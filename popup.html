@@ -2,15 +2,19 @@
 <html>
 <head>
     <title>Picture in Picture Creater</title>
-    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="create.js"></script>
+    <script src="ga.js"></script>
 </head>
 
 <body>
-	<p id="panel_enable_guide" style="display: none;">Panel Window has been disabled, to enable it please go to chrome://flags/ and search for "Enable Panels", then restart chrome.</p>
+	<p id="panel_enable_guide" style="display: none;">Panel Window has been disabled, to enable it please go to <a id="flags_tab_link" href="#"><strong>chrome://flags/</strong></a> and search for "Enable Panels", then restart chrome.</p>
     <form>
-        URL: <input type="text" name="src_URL" value="http://"><br>
-        <button id="new_panel_btn" type="submit" autofocus>Open</button>
+        Enter URL here:<br>
+        <input class="url_box glowing-border" type="text" name="src_URL" value="http://" autofocus><br>
+        <a href="#" id="new_panel_btn" class="round_btn" type="submit">Open in PiP</a>
     </form>
 </body>
 </html>
