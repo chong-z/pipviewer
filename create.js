@@ -86,6 +86,10 @@ var windowCreater = {
             $("#panel_enable_guide").css("display", "block");
             _gaq.push(['_trackEvent', 'PanelFlag', 'Disabled']);
         };
+
+        if (!isPanelEnabled) {
+            chrome.windows.remove(window.id, null);
+        };
     },
     
 };
@@ -120,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     $("#flags_tab_link").click(function() {
-        chrome.tabs.create({url: "chrome://flags/"}, null);
+        chrome.tabs.create({url: "chrome://flags/#enable-panels"}, null);
     });
 
 });
