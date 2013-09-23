@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Picture in Picture Viewer",
-  "description": "Docks your favourite stuff in a small floating window! Including webpages, videos, chrome apps and even your local files.",
+  "description": "Docks your favourite stuff in a mobile-view window! Including facebook chattings, Youtube videos and Hangouts calls.",
   "version": "0.2",
   "author": "Chong Zhang",
 
