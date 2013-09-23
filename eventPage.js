@@ -67,7 +67,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 
 
 chrome.windows.onCreated.addListener(function(aWindow) {
-    var isPanelWindow = aWindow.alwaysOnTop;
+    var isPanelWindow = (aWindow.type == "panel");
     if (isPanelWindow) {
         addPanelWindowId(aWindow.id);
     };
