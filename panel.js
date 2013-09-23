@@ -1,3 +1,11 @@
+chrome.tabs.getCurrent(function (atab) {
+	chrome.runtime.sendMessage({remove_mobile_tab_id: atab.id}, function(response){
+		if (response["exists"] == true) {
+			console.log("reloading...");
+			location.reload();	
+		};
+	});
+});
 
 $(document).ready(function() {
 
