@@ -46,24 +46,17 @@ var windowCreater = {
                         "youku": "v.youku.com/v_show/id_",
                         "flash": ".swf"},
 
+    sharedFrameSrc: "http://",
+
     createFrameWindow_: function(src) {
         var createData = {
             url: "panel.html",
             type: "panel",
         };
-        
-        chrome.runtime.onMessage.addListener(
-            function(request, sender, sendResponse) {
 
-                if (request.get_frame_src == true) {
-                    console.log("get request for get_frame_src, src=" + src);
-                    sendResponse({frame_src: src});
-                }
-        });
+        windowCreater.sharedFrameSrc = src;
 
-        console.log("get_frame_src listener set");
-
-        chrome.windows.create(createData, this.onWindowCreated_);
+        chrome.windows.create(createData, this.onFrameWindowCreated_);
     },
 
     createURLWindow_: function(aurl) {
@@ -74,10 +67,10 @@ var windowCreater = {
 
         console.log("New url is " + aurl);
         
-        chrome.windows.create(createData, this.onWindowCreated_);
+        chrome.windows.create(createData, this.onURLWindowCreated_);
     },
 
-    onWindowCreated_: function(window) {
+    onFrameWindowCreated_: function(window) {
         var isPanelEnabled = window.alwaysOnTop;
         if (isPanelEnabled) {
             $("#panel_enable_guide").css("display", "none");
@@ -91,8 +84,37 @@ var windowCreater = {
             chrome.windows.remove(window.id, null);
         };
     },
+
+    onURLWindowCreated_: function(window) {
+        var isPanelEnabled = window.alwaysOnTop;
+        if (isPanelEnabled) {
+            $("#panel_enable_guide").css("display", "none");
+            _gaq.push(['_trackEvent', 'PanelFlag', 'Enabled']);
+        } else {
+            $("#panel_enable_guide").css("display", "block");
+            _gaq.push(['_trackEvent', 'PanelFlag', 'Disabled']);
+        };
+
+        if (!isPanelEnabled) {
+            chrome.windows.remove(window.id, null);
+        } else {
+
+
+        };
+    },
     
 };
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+
+        if (request.get_frame_src == true) {
+            console.log("get request for get_frame_src, src=" + windowCreater.sharedFrameSrc);
+            sendResponse({frame_src: windowCreater.sharedFrameSrc});
+        }
+});
+
+console.log("get_frame_src listener set");
 
 document.addEventListener('DOMContentLoaded', function () {
 
