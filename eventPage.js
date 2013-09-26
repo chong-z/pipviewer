@@ -50,8 +50,15 @@ var removeMobileTabListener = function(request, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener(removeMobileTabListener);
 
+var MobileViewExceptions = ["plus.google.com/hangouts/"];
+
 chrome.webRequest.onBeforeSendHeaders.addListener(
   function(details) {
+    for (url_p in MobileViewExceptions) {
+        if (details.url.indexOf(url_p) > -1) {
+            return {requestHeaders: details.requestHeaders};
+        };
+    };
     if (MobileTabIDs.indexOf(details.tabId) > -1) {
         for (var i = 0; i < details.requestHeaders.length; ++i) {
             if (details.requestHeaders[i].name === 'User-Agent') {
