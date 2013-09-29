@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Picture in Picture Viewer",
-  "description": "Docks your favourite stuff in a mobile-view window! Including Facebook chatting, Youtube videos and Hangouts calls.",
+  "description": "Docks your favourite stuff in a floating mobile-view window! Including Facebook chatting, Youtube videos and Hangouts calls",
   "version": "0.3",
   "author": "Chong Zhang",
 
