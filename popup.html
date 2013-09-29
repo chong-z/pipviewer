@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="popup.css">
     <link rel="stylesheet" type="text/css" href="common.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="create.js"></script>
+    <script src="popup.js"></script>
     <script src="ga.js"></script>
 </head>
 
@@ -14,8 +14,12 @@
     <div class="input_div">
         Enter URL here:<br>
         <input id="a_url_box" class="url_box glowing-border" type="text" name="src_URL" value="http://" autofocus><br>
-        <a href="#" id="new_panel_btn" class="round_btn">Open in PiP</a>
     </div>
+    <a href="#" id="new_panel_btn" class="round_btn">Open in PiP</a>
+
+    <a href="#"><img id="options_icon" src="options_icon.png" /></a>
+
+    <iframe id="options_frame" src="options.html" frameborder="0"></iframe>
 </body>
 </html>
 

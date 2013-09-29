@@ -3,8 +3,9 @@ var windowCreater = {
     
     makeNewWindow: function(srcurl) {
         var frameType = this.getFrameType(srcurl);
+        var embed_view_opt = localStorage["embed_view_opt"];
 
-        if (frameType != "") {
+        if (embed_view_opt == "enabled" && frameType != "") {
             var frameSrc = this.convertToFrameSrc(srcurl, frameType);
             this.createFrameWindow_(frameSrc);
         } else {
@@ -136,6 +137,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (srcurl.indexOf("chrome://newtab") == -1) {
             windowCreater.makeNewWindow(srcurl);
+        };
+    });
+
+    $("#options_icon").click(function() {
+        $("#options_frame").stop();
+        var isShown = false;
+        if ($("#options_frame").height() > 0) {isShown = true;};
+        
+        console.log("clicked");
+
+        if (!isShown) {
+            $("#options_frame").css("display", "block");
+            $("#options_frame").animate({height: "70px"}, 300);
+        } else {
+            $("#options_frame").animate({height: "0px"}, 150, function(){
+                $("#options_frame").css("display", "none");
+            });
         };
     });
 

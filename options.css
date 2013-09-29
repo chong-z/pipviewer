@@ -1,0 +1,8 @@
+body {
+	overflow: hidden;
+}
+
+.options_block {
+	border-top: 2px solid;
+	border-color: rgba(255, 255, 255, .5);
+}

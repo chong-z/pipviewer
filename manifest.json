@@ -3,10 +3,12 @@
 
   "name": "Picture in Picture Viewer",
   "description": "Docks your favourite stuff in a mobile-view window! Including Facebook chatting, Youtube videos and Hangouts calls.",
-  "version": "0.2.1",
+  "version": "0.3",
   "author": "Chong Zhang",
 
   "icons": {"128": "icon128.png"},
+
+  "options_page": "options.html",
 
   "background": {
     "scripts": ["eventPage.js"],

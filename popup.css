@@ -20,3 +20,21 @@ input {
 strong {
 	color: #000099;
 }
+
+#options_icon {
+	height: 20px;
+	width: 20px;
+	float: right;
+
+}
+
+iframe {
+	padding: 0px;
+	margin: 0px;
+}
+
+#options_frame {
+	display: none;
+	height: 0px;
+	width: 100%;
+}
