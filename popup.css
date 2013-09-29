@@ -22,8 +22,9 @@ strong {
 }
 
 #options_icon {
-	height: 20px;
-	width: 20px;
+	margin-top: 5px;
+	height: 15px;
+	width: 15px;
 	float: right;
 
 }
