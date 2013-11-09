@@ -130,7 +130,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create the window immediately or wait for the button event
         var srcurl = $('input[name="src_URL"]').val();
         if (srcurl.indexOf("chrome://newtab") == -1) {
-            windowCreater.makeNewWindow(srcurl);
+            if (localStorage["open_current_tab_opt"] != "disabled") {
+                windowCreater.makeNewWindow(srcurl);
+            }
         } else {
             $('input[name="src_URL"]').val("http://")
         }
