@@ -2,6 +2,11 @@
 var windowCreater = {
     
     makeNewWindow: function(srcurl) {
+        if (srcurl.indexOf("http://") != 0 && srcurl.indexOf("https://") != 0 && srcurl.indexOf("file://") != 0) {
+            // Needs a procotol
+            srcurl = "http://" + srcurl;
+        }
+
         var frameType = this.getFrameType(srcurl);
         var embed_view_opt = localStorage["embed_view_opt"];
 
