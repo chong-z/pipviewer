@@ -174,4 +174,12 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.create({url: "chrome://flags/#enable-panels"}, null);
     });
 
+    $("#fb-button").click(function () {
+        windowCreater.makeNewWindow("https://www.facebook.com/");
+    });
+
+    $("#gk-button").click(function () {
+        windowCreater.makeNewWindow("https://drive.google.com/keep/");
+    });
+
 });
