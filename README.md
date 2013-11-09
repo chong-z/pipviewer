@@ -24,5 +24,11 @@ Supported video sites:
 * Youku
 
 # Known issues
-* Don't do right click in a PiP window, your chrome will crash
+* Don't do right click in a PiP window, your chrome will crash, fixed in Chrome Canary v33.0.1703.0
 * Your should open PiP window from a video link directly instead of opening Youtube home page
+
+# Updates
+## v0.3.1
+* Can open url without prefix like "http://"
+* Add option for automatically open current tab in panel window
+* Add shortcuts for Facebook and Google Keep
