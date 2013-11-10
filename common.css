@@ -69,3 +69,7 @@ a:focus {
 	outline: none;
 }
 
+.small {
+	font-size: 90%;
+}
+
