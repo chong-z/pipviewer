@@ -122,7 +122,9 @@ chrome.runtime.onMessage.addListener(
         if (request.get_frame_src == true) {
             console.log("get request for get_frame_src, src=" + windowCreater.sharedFrameSrc);
             sendResponse({frame_src: windowCreater.sharedFrameSrc});
+            return true;
         }
+        return false;
 });
 
 console.log("get_frame_src listener set");
@@ -134,7 +136,9 @@ chrome.runtime.onMessage.addListener(
             console.log("get request to create new window, src=" + request.srcurl);
             sendResponse({got_url: request.srcurl});
             windowCreater.makeNewWindow(request.srcurl);
+            return true;
         }
+        return false;
 });
 
 

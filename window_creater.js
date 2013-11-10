@@ -78,13 +78,6 @@ var windowCreater = {
 
     onFrameWindowCreated_: function(window) {
         var isPanelEnabled = window.alwaysOnTop;
-        if (isPanelEnabled) {
-            $("#panel_enable_guide").css("display", "none");
-            _gaq.push(['_trackEvent', 'PanelFlag', 'Enabled']);
-        } else {
-            $("#panel_enable_guide").css("display", "block");
-            _gaq.push(['_trackEvent', 'PanelFlag', 'Disabled']);
-        };
 
         if (!isPanelEnabled) {
             chrome.windows.remove(window.id, null);
@@ -93,13 +86,6 @@ var windowCreater = {
 
     onURLWindowCreated_: function(window) {
         var isPanelEnabled = window.alwaysOnTop;
-        if (isPanelEnabled) {
-            $("#panel_enable_guide").css("display", "none");
-            _gaq.push(['_trackEvent', 'PanelFlag', 'Enabled']);
-        } else {
-            $("#panel_enable_guide").css("display", "block");
-            _gaq.push(['_trackEvent', 'PanelFlag', 'Disabled']);
-        };
 
         if (!isPanelEnabled) {
             chrome.windows.remove(window.id, null);
