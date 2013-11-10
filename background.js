@@ -90,4 +90,60 @@ chrome.windows.onRemoved.addListener(function(aWindow) {
 });
 
 
+function onGetURL(srcurl) {
+    var prefix = "panel://";
+    var suffix = "#panel";
+    if (srcurl.indexOf(prefix) == 0) {
+        srcurl = srcurl.substr(prefix.length);
+        windowCreater.makeNewWindow(srcurl);
+        return true;
+    } else if (srcurl.indexOf(suffix) != -1) {
+        srcurl = srcurl.substr(0, srcurl.indexOf(suffix)) + srcurl.substr(srcurl.indexOf(suffix) + suffix.length);
+        windowCreater.makeNewWindow(srcurl);
+        return true;
+    } else {
+        var encoded_prefix = "panel%3A%2F%2F";
+        var parsed = parseURL(srcurl);
+        srcurl = parsed.params.q;
+        if (srcurl && srcurl.indexOf(encoded_prefix) == 0) {
+            srcurl = srcurl.substr(encoded_prefix.length);
+            windowCreater.makeNewWindow(srcurl);
+            return true;
+        }
+    } 
+
+    return false;
+}
+
+
+// // // Which one would be better?
+
+// chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+//     console.log(tab.id);
+//     if (onGetURL(tab.url)) {
+//         chrome.tabs.remove(tab.id, null);
+//     }
+// });
+
+// chrome.tabs.onCreated.addListener(function(tab) {
+//     console.log(tab.id);
+//     if (onGetURL(tab.url)) {
+//         chrome.tabs.remove(tab.id, null);
+//     }
+// });
+
+chrome.webNavigation.onBeforeNavigate.addListener(function (details) {
+    var tabId = details.tabId;
+    var url = details.url;
+    if (onGetURL(url)) {
+        chrome.tabs.remove(tabId, null);
+    }
+});
+
+// chrome.webNavigation.onCommitted.addListener(function (details) {
+//     console.log(details.url);
+// });
+
+
+
 
