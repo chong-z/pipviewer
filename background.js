@@ -116,6 +116,28 @@ function onGetURL(srcurl) {
 }
 
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+
+        if (request.get_frame_src == true) {
+            console.log("get request for get_frame_src, src=" + windowCreater.sharedFrameSrc);
+            sendResponse({frame_src: windowCreater.sharedFrameSrc});
+        }
+});
+
+console.log("get_frame_src listener set");
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+
+        if (request.create_new_window == true) {
+            console.log("get request to create new window, src=" + request.srcurl);
+            sendResponse({got_url: request.srcurl});
+            windowCreater.makeNewWindow(request.srcurl);
+        }
+});
+
+
 // // // Which one would be better?
 
 // chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {

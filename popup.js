@@ -1,4 +1,10 @@
 
+function bkmakeNewWindow(srcurl) {
+    chrome.runtime.sendMessage({create_new_window: true, srcurl: srcurl}, function(response){
+        console.log("Url got by background page: " + response.got_url);
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -9,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var srcurl = $('input[name="src_URL"]').val();
         if (srcurl.indexOf("chrome://newtab") == -1) {
             if (localStorage["open_current_tab_opt"] != "disabled") {
-                windowCreater.makeNewWindow(srcurl);
+                bkmakeNewWindow(srcurl);
             }
         } else {
             $('input[name="src_URL"]').val("http://")
@@ -21,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var srcurl = $('input[name="src_URL"]').val();
 
         if (srcurl.indexOf("chrome://newtab") == -1) {
-            windowCreater.makeNewWindow(srcurl);
+            bkmakeNewWindow(srcurl);
         };
     });
 
@@ -53,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     $("#fb-button").click(function () {
-        windowCreater.makeNewWindow("https://www.facebook.com/");
+        bkmakeNewWindow("https://www.facebook.com/");
     });
 
     $("#gk-button").click(function () {
-        windowCreater.makeNewWindow("https://drive.google.com/keep/");
+        bkmakeNewWindow("https://drive.google.com/keep/");
     });
 
 });
