@@ -80,22 +80,27 @@ var windowCreater = {
         var isPanelEnabled = window.alwaysOnTop;
 
         if (!isPanelEnabled) {
+            request_show_panel_enable_guide();
             chrome.windows.remove(window.id, null);
-        };
+        }
     },
 
     onURLWindowCreated_: function(window) {
         var isPanelEnabled = window.alwaysOnTop;
 
         if (!isPanelEnabled) {
+            request_show_panel_enable_guide();
             chrome.windows.remove(window.id, null);
-        } else {
-
-
-        };
+        }
     },
     
 };
+
+function request_show_panel_enable_guide() {
+    chrome.runtime.sendMessage({show_panel_enable_guide: true}, function(response){
+        console.log("Requests to show panel_enable_guidege: status " + response.status);
+    });
+}
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {

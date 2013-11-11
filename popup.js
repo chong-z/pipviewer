@@ -5,6 +5,17 @@ function bkmakeNewWindow(srcurl) {
     });
 }
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+
+        if (request.show_panel_enable_guide == true) {
+            console.log("get request to show panel_enable_guide");
+            sendResponse({status: "ok"});
+            $("#panel_enable_guide").css("display", "block");
+            return true;
+        }
+        return false;
+});
 
 document.addEventListener('DOMContentLoaded', function () {
 
