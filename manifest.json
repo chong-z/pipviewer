@@ -27,6 +27,7 @@
     "webRequest",
     "webRequestBlocking",
     "webNavigation",
+    "contextMenus",
     "*://*/*"
   ],
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js; object-src 'self'"

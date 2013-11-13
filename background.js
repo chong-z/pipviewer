@@ -141,6 +141,17 @@ chrome.runtime.onMessage.addListener(
         return false;
 });
 
+chrome.contextMenus.create({"id": "pipviewercm", "title": "Open Link in Panel", "contexts": ["link", "image", "video", "audio"]}, null);
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
+    if (info.menuItemId == "pipviewercm") {
+        if (info.linkUrl !== undefined) {
+            windowCreater.makeNewWindow(info.linkUrl);
+        } else {
+            windowCreater.makeNewWindow(info.srcUrl);
+        }
+    }
+});
+
 
 // // // Which one would be better?
 
