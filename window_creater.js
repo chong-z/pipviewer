@@ -43,6 +43,10 @@ var windowCreater = {
             frameSrc = frameSrc.replace("{video_id}", videoId);
         } else if (frameType == "flash") {
             frameSrc = url;
+        } else if (frameType == "twitch"){
+            var videoId = url.substr(url.indexOf("twitch.tv/")+10);
+            frameSrc = "http://www.twitch.tv/widgets/live_embed_player.swf?channel={video_id}";
+            frameSrc = frameSrc.replace("{video_id}", videoId);
         }
 
         return frameSrc;
@@ -50,7 +54,8 @@ var windowCreater = {
 
     frameSrcPattern_: {"youtube": "www.youtube.com/watch?v=",
                         "youku": "v.youku.com/v_show/id_",
-                        "flash": ".swf"},
+                        "flash": ".swf",
+                        "twitch": "www.twitch.tv/"},
 
     sharedFrameSrc: "http://",
 
