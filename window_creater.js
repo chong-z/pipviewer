@@ -2,7 +2,7 @@
 var windowCreater = {
     
     makeNewWindow: function(srcurl) {
-        if (srcurl.indexOf("http://") != 0 && srcurl.indexOf("https://") != 0 && srcurl.indexOf("file://") != 0 && srcurl.indexOf("chrome://") != 0) {
+        if (srcurl.indexOf("http://") != 0 && srcurl.indexOf("https://") != 0 && srcurl.indexOf("file://") != 0 && srcurl.indexOf("chrome://") != 0 && srcurl.indexOf("chrome-extension://") != 0) {
             // Needs a procotol
             srcurl = "http://" + srcurl;
         }
