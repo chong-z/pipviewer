@@ -22,7 +22,9 @@ var windowCreater = {
     getFrameType: function(url) {
         for (var anItem in this.frameSrcPattern_) {
             var currentPattern = this.frameSrcPattern_[anItem];
-            if (url.indexOf(currentPattern) != -1) {
+			var re = new RegExp(currentPattern,"gm");
+			
+            if (url.search(re) != -1) {
                 return anItem;
             }
         };
@@ -43,9 +45,17 @@ var windowCreater = {
             frameSrc = frameSrc.replace("{video_id}", videoId);
         } else if (frameType == "flash") {
             frameSrc = url;
-        } else if (frameType == "twitch"){
+        } else if (frameType == "twitch_player") {
             var videoId = url.substr(url.indexOf("twitch.tv/")+10);
             frameSrc = "http://www.twitch.tv/widgets/live_embed_player.swf?channel={video_id}";
+            frameSrc = frameSrc.replace("{video_id}", videoId);
+        } else if (frameType == "twitch_past") {
+            var videoId = url.substr(url.lastIndexOf("/")+1);
+            frameSrc = "http://www.twitch.tv/swflibs/TwitchPlayer.swf?videoId=a{video_id}";
+            frameSrc = frameSrc.replace("{video_id}", videoId);
+        } else if (frameType == "twitch_highlight") {
+            var videoId = url.substr(url.lastIndexOf("/")+1);
+            frameSrc = "http://www.twitch.tv/swflibs/TwitchPlayer.swf?videoId=c{video_id}";
             frameSrc = frameSrc.replace("{video_id}", videoId);
         }
 
@@ -55,7 +65,9 @@ var windowCreater = {
     frameSrcPattern_: {"youtube": "www.youtube.com/watch?v=",
                         "youku": "v.youku.com/v_show/id_",
                         "flash": ".swf",
-                        "twitch": "www.twitch.tv/"},
+                        "twitch_player": "www.twitch.tv\\/\\w+\\/*$",
+						"twitch_past": "www.twitch.tv\\/\\w+\\/(b|archive)\\/.*$",
+						"twitch_highlight": "www.twitch.tv\\/\\w+\\/c\\/\\w+$"},
 
     sharedFrameSrc: "http://",
 
