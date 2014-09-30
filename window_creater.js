@@ -62,9 +62,10 @@ var windowCreater = {
         return frameSrc;
     },
 
-    frameSrcPattern_: {"youtube": "www.youtube.com/watch?v=",
-                        "youku": "v.youku.com/v_show/id_",
-                        "flash": ".swf",
+    // Actually all the '.' should be '\\.'
+    frameSrcPattern_: {"youtube": "www.youtube.com\\/watch\\?v=",
+                        "youku": "v.youku.com\\/v_show\\/id_",
+                        "flash": ".swf",  
                         "twitch_player": "www.twitch.tv\\/\\w+\\/*$",
 						"twitch_past": "www.twitch.tv\\/\\w+\\/(b|archive)\\/.*$",
 						"twitch_highlight": "www.twitch.tv\\/\\w+\\/c\\/\\w+$"},
