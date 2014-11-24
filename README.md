@@ -3,8 +3,11 @@ pipviewer
 
 Picture-in-Picture Viewer Chrome Extension
 
-# Requirements
-In order to use the new panel window feature you need to type chrome://flags/#enable-panels in address bar and enable panel windows (a chrome restart is required), otherwise only popup windows will be created.
+# Install
+1. Go to chrome://flags/#enable-panels and enable panels
+2. Fully restart Chrome
+
+Please double check you have followed the instructions if PiP opens a small window and closes before you can see it.
 
 # Features
 * Playing online videos in a standalone window!
@@ -13,21 +16,44 @@ In order to use the new panel window feature you need to type chrome://flags/#en
 * Viewing websites in mobile view!
 
 # Usage
-By clicking the PiP button a panel window will be created based on your current tab.
+You can choose the way you like to open a panel window, which includes:
+* Click the PiP icon on the top right corner to open current tab in panel window
+* Open url like "www.yoururl.com#panel" in address bar to open "www.yoururl.com" in panel window, so you can bookmark "www.yoururl.com#panel" or save it to desktop as a shortcut
+* Right click on a link and choose "Open Link in Panel" to open it in panel window
 
-* If it is a new tab there will be a popup box for you to enter the url you want.
-* If you are viewing a video or the url ends with .swf the video or the flash will be captured into a iframe block automatically.
-* Otherwise the url will be loaded directly by the panel window, and it's in mobile view!
+## Wants to know how to bookmark it?
+Of course you can create the bookmark and edit it, but the secret is you can do it in a simpler way:
 
-Supported video sites:
+1. Open "www.yoururl.com" as usual
+2. Addend just "#panel" to the address bar and press enter key once (twice will leads to a panel window), nothing should happen
+3. Bookmark it!
+
+# Supported video sites:
+* Twitch
 * Youtube
 * Youku
 
 # Known issues
-* Don't do right click in a PiP window, your chrome will crash, fixed in Chrome Canary v33.0.1703.0
+* (Fixed!) Don't do right click in a PiP window, your chrome will crash, fixed in Chrome Canary v33.0.1703.0
 * Your should open PiP window from a video link directly instead of opening Youtube home page
 
 # Updates
+
+## v0.4.6.1
+* Fixing bugs for Youtube and Youku
+
+## v0.4.6
+* Stronger Twitch support. Credits: spiffomatic64 
+
+## v0.4.5
+* Twitch support
+
+## v0.4.4
+* Allow 'chrome-extension://' protocol
+
+## v0.4.3
+* Right click a link and open link in panel
+
 ## v0.4
 * Bookmark it!
   * Try appending "#panel" to the URL and bookmark it!
