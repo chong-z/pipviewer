@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("clicked");
 
         if (!isShown) {
-            $("#options_frame").css("display", "block");
-            $("#options_frame").animate({height: "70px"}, 300);
+            chrome.tabs.create({url: "options.html"}, null);
+            // $("#options_frame").css("display", "block");
+            // $("#options_frame").animate({height: "95px"}, 300);
         } else {
             $("#options_frame").animate({height: "0px"}, 150, function(){
                 $("#options_frame").css("display", "none");

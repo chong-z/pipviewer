@@ -28,5 +28,8 @@ document.addEventListener('DOMContentLoaded', function(){
         var value = "enabled";
         if (!isChecked) {value = "disabled";};
         localStorage[boxName] = value;
+
+        updatePopupOption();
     });
 });
+

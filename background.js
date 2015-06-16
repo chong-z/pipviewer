@@ -182,5 +182,5 @@ chrome.webNavigation.onBeforeNavigate.addListener(function (details) {
 // });
 
 
-
+updatePopupOption();
 

@@ -118,6 +118,7 @@ function request_show_panel_enable_guide() {
     chrome.runtime.sendMessage({show_panel_enable_guide: true}, function(response){
         console.log("Requests to show panel_enable_guidege: status " + response.status);
     });
+    chrome.tabs.create({url: "error.html"});
 }
 
 chrome.runtime.onMessage.addListener(
