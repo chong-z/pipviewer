@@ -1,3 +1,10 @@
+function getParameterByName(url, name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(url);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 function makeNewWindow() {
     chrome.tabs.getSelected(null, function (tab) {
         var srcurl = tab.url;

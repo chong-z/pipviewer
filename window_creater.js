@@ -36,9 +36,11 @@ var windowCreater = {
         var frameSrc = "";
 
         if (frameType == "youtube") {
-            var videoId = url.substr(url.indexOf("?v=")+3, 11);
-            frameSrc = "http://www.youtube.com/embed/{video_id}?feature=player_detailpage";
+            var videoId = getParameterByName(url, "v");
+            var listID = getParameterByName(url, "list");
+            frameSrc = "http://www.youtube.com/embed/{video_id}?list={list_id}";
             frameSrc = frameSrc.replace("{video_id}", videoId);
+            frameSrc = frameSrc.replace("{list_id}", listID);
         } else if (frameType == "youku") {
             var videoId = url.substr(url.indexOf("id_")+3, 13);
             frameSrc = "http://player.youku.com/embed/{video_id}";
@@ -63,7 +65,7 @@ var windowCreater = {
     },
 
     // Actually all the '.' should be '\\.'
-    frameSrcPattern_: {"youtube": "www.youtube.com\\/watch\\?v=",
+    frameSrcPattern_: {"youtube": "www.youtube.com\\/watch\\?",
                         "youku": "v.youku.com\\/v_show\\/id_",
                         "flash": ".swf",  
                         "twitch_player": "www.twitch.tv\\/\\w+\\/*$",
