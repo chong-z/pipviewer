@@ -10,7 +10,7 @@ var windowCreater = {
         var frameType = this.getFrameType(srcurl);
         var embed_view_opt = localStorage["embed_view_opt"];
 
-        if (embed_view_opt == "enabled" && frameType != "") {
+        if (embed_view_opt != "disabled" && frameType != "") {
             var frameSrc = this.convertToFrameSrc(srcurl, frameType);
             this.createFrameWindow_(frameSrc);
         } else {

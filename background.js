@@ -55,7 +55,7 @@ var MobileViewExceptions = ["plus.google.com/hangouts/"];
 chrome.webRequest.onBeforeSendHeaders.addListener(
   function(details) {
     var mobile_view_opt = localStorage["mobile_view_opt"];
-    if (mobile_view_opt != "enabled") {
+    if (mobile_view_opt == "disabled") {
         return {requestHeaders: details.requestHeaders};
     };
     
