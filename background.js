@@ -85,8 +85,8 @@ chrome.windows.onCreated.addListener(function(aWindow) {
     };
 });
 
-chrome.windows.onRemoved.addListener(function(aWindow) {
-    removePanelWindowId(aWindow.id);
+chrome.windows.onRemoved.addListener(function(windowId) {
+    removePanelWindowId(windowId);
 });
 
 
