@@ -38,6 +38,12 @@ Of course you can create the bookmark and edit it, but the secret is you can do 
 * Your should open PiP window from a video link directly instead of opening Youtube home page
 
 # Updates
+## v0.5.1
+* Fixed a window removing issue. Credits: Koichi-Kobayashi
+
+## v0.5
+* Support Youtube playlist
+* Added option to hide popup
 
 ## v0.4.6.1
 * Fixing bugs for Youtube and Youku
